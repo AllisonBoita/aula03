@@ -10,7 +10,7 @@ import javax.swing.JList;
 
 public class Principal {
 
-	private JFrame frame;
+	private JFrame frmLocadora;
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNome;
 	private JTextField textFieldMarca;
@@ -30,6 +30,14 @@ public class Principal {
 	private JTextField textField_10;
 	private JTextField textField_11;
 	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
+	private JTextField textField_18;
+	private JTextField textField_19;
+	private JTextField textField_20;
 
 	/**
 	 * Launch the application.
@@ -39,7 +47,7 @@ public class Principal {
 			public void run() {
 				try {
 					Principal window = new Principal();
-					window.frame.setVisible(true);
+					window.frmLocadora.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,14 +66,15 @@ public class Principal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1072, 760);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmLocadora = new JFrame();
+		frmLocadora.setTitle("Locadora");
+		frmLocadora.setBounds(100, 100, 1072, 760);
+		frmLocadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmLocadora.getContentPane().setLayout(null);
 		
 		JTabbedPane CadastroCarros = new JTabbedPane(JTabbedPane.TOP);
 		CadastroCarros.setBounds(12, 13, 1030, 687);
-		frame.getContentPane().add(CadastroCarros);
+		frmLocadora.getContentPane().add(CadastroCarros);
 		
 		JPanel panelCarro = new JPanel();
 		CadastroCarros.addTab("Cadastro Carros", null, panelCarro, null);
@@ -273,5 +282,93 @@ public class Principal {
 		JPanel panelLocacao = new JPanel();
 		CadastroCarros.addTab("Locacao", null, panelLocacao, null);
 		panelLocacao.setLayout(null);
+		
+		textField_13 = new JTextField();
+		textField_13.setBounds(137, 13, 116, 22);
+		panelLocacao.add(textField_13);
+		textField_13.setColumns(10);
+		
+		JLabel lblNewLabel_18 = new JLabel("Usu\u00E1rio");
+		lblNewLabel_18.setBounds(12, 16, 56, 16);
+		panelLocacao.add(lblNewLabel_18);
+		
+		JLabel lblNewLabel_19 = new JLabel("Carro");
+		lblNewLabel_19.setBounds(12, 43, 56, 16);
+		panelLocacao.add(lblNewLabel_19);
+		
+		textField_14 = new JTextField();
+		textField_14.setBounds(137, 40, 116, 22);
+		panelLocacao.add(textField_14);
+		textField_14.setColumns(10);
+		
+		JLabel lblNewLabel_20 = new JLabel("Data de Loca\u00E7\u00E3o");
+		lblNewLabel_20.setBounds(12, 72, 113, 16);
+		panelLocacao.add(lblNewLabel_20);
+		
+		textField_15 = new JTextField();
+		textField_15.setBounds(137, 69, 116, 22);
+		panelLocacao.add(textField_15);
+		textField_15.setColumns(10);
+		
+		JLabel lblNewLabel_21 = new JLabel("Data estimada de devolu\u00E7\u00E3o");
+		lblNewLabel_21.setBounds(12, 101, 182, 16);
+		panelLocacao.add(lblNewLabel_21);
+		
+		textField_16 = new JTextField();
+		textField_16.setBounds(183, 98, 116, 22);
+		panelLocacao.add(textField_16);
+		textField_16.setColumns(10);
+		
+		JLabel lblNewLabel_22 = new JLabel("Data de devolu\u00E7\u00E3o");
+		lblNewLabel_22.setBounds(12, 130, 160, 16);
+		panelLocacao.add(lblNewLabel_22);
+		
+		textField_17 = new JTextField();
+		textField_17.setBounds(183, 130, 116, 22);
+		panelLocacao.add(textField_17);
+		textField_17.setColumns(10);
+		
+		JLabel lblNewLabel_23 = new JLabel("Valor Cobrado");
+		lblNewLabel_23.setBounds(460, 16, 97, 16);
+		panelLocacao.add(lblNewLabel_23);
+		
+		textField_18 = new JTextField();
+		textField_18.setBounds(569, 13, 116, 22);
+		panelLocacao.add(textField_18);
+		textField_18.setColumns(10);
+		
+		JLabel lblNewLabel_24 = new JLabel("Valor Pago");
+		lblNewLabel_24.setBounds(460, 43, 70, 16);
+		panelLocacao.add(lblNewLabel_24);
+		
+		textField_19 = new JTextField();
+		textField_19.setBounds(569, 40, 116, 22);
+		panelLocacao.add(textField_19);
+		textField_19.setColumns(10);
+		
+		JLabel lblNewLabel_25 = new JLabel("Valor Multa");
+		lblNewLabel_25.setBounds(460, 72, 97, 16);
+		panelLocacao.add(lblNewLabel_25);
+		
+		textField_20 = new JTextField();
+		textField_20.setBounds(569, 69, 116, 22);
+		panelLocacao.add(textField_20);
+		textField_20.setColumns(10);
+		
+		JButton btnNewButton_5 = new JButton("Locar Carro");
+		btnNewButton_5.setBounds(858, 126, 128, 25);
+		panelLocacao.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("Carros Locados");
+		btnNewButton_6.setBounds(692, 126, 133, 25);
+		panelLocacao.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("Devolver Carro");
+		btnNewButton_7.setBounds(515, 126, 140, 25);
+		panelLocacao.add(btnNewButton_7);
+		
+		JList list_2 = new JList();
+		list_2.setBounds(12, 191, 1001, 453);
+		panelLocacao.add(list_2);
 	}
 }
