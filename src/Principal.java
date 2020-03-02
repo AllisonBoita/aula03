@@ -1,43 +1,46 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal {
 
-	private JFrame frmLocadora;
-	private JTextField textFieldCodigo;
-	private JTextField textFieldNome;
+	private JFrame frame;
+	private JTextField textFieldCdCarro;
+	private JTextField textFieldDescricao;
 	private JTextField textFieldMarca;
 	private JTextField textFieldModelo;
-	private JTextField textFieldPreco;
 	private JTextField textFieldValor;
-	private JTextField textField;
+	private JTextField textFieldNome;
+	private JTextField textFieldSobrenome;
+	private JTextField textFieldCNH;
+	private JTextField textFieldDtNascimento;
+	private JTextField textFieldFone;
+	private JTextField textFieldEmail;
+	private JTextField textFieldEndereco;
+	private JTextField textFieldCpl;
+	private JTextField textFieldCidade;
+	private JTextField textFieldCep;
+	private JTextField textFieldUf;
+	private JTextField textFieldUsuarioLoca;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
+	private JTextField textFieldDtLoca;
+	private JTextField textFieldDtDevo;
+	private JTextField textFieldVlPagar;
+	private JTextField textFieldVlPago;
+	private JTextField textFieldVlMulta;
+	private DefaultListModel<Carros> listaCarros;
+	private DefaultListModel<Usuario> listaUsuario;
+	private DefaultListModel<Locacao> listaLocacao;
+
 
 	/**
 	 * Launch the application.
@@ -46,8 +49,8 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal window = new Principal();
-					window.frmLocadora.setVisible(true);
+				Principal window = new Principal();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,309 +69,306 @@ public class Principal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmLocadora = new JFrame();
-		frmLocadora.setTitle("Locadora");
-		frmLocadora.setBounds(100, 100, 1072, 760);
-		frmLocadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmLocadora.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setBounds(100, 100, 911, 639);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		JTabbedPane CadastroCarros = new JTabbedPane(JTabbedPane.TOP);
-		CadastroCarros.setBounds(12, 13, 1030, 687);
-		frmLocadora.getContentPane().add(CadastroCarros);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 881, 579);
+		frame.getContentPane().add(tabbedPane);
 		
-		JPanel panelCarro = new JPanel();
-		CadastroCarros.addTab("Cadastro Carros", null, panelCarro, null);
-		panelCarro.setLayout(null);
-		
-		textFieldCodigo = new JTextField();
-		textFieldCodigo.setBounds(131, 36, 850, 22);
-		panelCarro.add(textFieldCodigo);
-		textFieldCodigo.setColumns(10);
+		JPanel panelVeiculo = new JPanel();
+		tabbedPane.addTab("Ve\u00EDculo", null, panelVeiculo, null);
+		panelVeiculo.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("C\u00F3digo");
-		lblNewLabel.setBounds(12, 38, 86, 19);
-		panelCarro.add(lblNewLabel);
+		lblNewLabel.setBounds(10, 11, 46, 14);
+		panelVeiculo.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		lblNewLabel_1.setBounds(12, 74, 56, 16);
-		panelCarro.add(lblNewLabel_1);
+		textFieldCdCarro = new JTextField();
+		textFieldCdCarro.setBounds(88, 8, 776, 20);
+		panelVeiculo.add(textFieldCdCarro);
+		textFieldCdCarro.setColumns(10);
 		
-		textFieldNome = new JTextField();
-		textFieldNome.setBounds(131, 71, 850, 22);
-		panelCarro.add(textFieldNome);
-		textFieldNome.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("Descri\u00E7\u00E3o");
+		lblNewLabel_1.setBounds(10, 46, 71, 14);
+		panelVeiculo.add(lblNewLabel_1);
+		
+		textFieldDescricao = new JTextField();
+		textFieldDescricao.setBounds(88, 43, 776, 20);
+		panelVeiculo.add(textFieldDescricao);
+		textFieldDescricao.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Marca");
-		lblNewLabel_2.setBounds(12, 109, 56, 16);
-		panelCarro.add(lblNewLabel_2);
+		lblNewLabel_2.setBounds(10, 82, 46, 14);
+		panelVeiculo.add(lblNewLabel_2);
 		
 		textFieldMarca = new JTextField();
-		textFieldMarca.setBounds(130, 106, 851, 22);
-		panelCarro.add(textFieldMarca);
+		textFieldMarca.setBounds(88, 79, 776, 20);
+		panelVeiculo.add(textFieldMarca);
 		textFieldMarca.setColumns(10);
 		
+		JLabel lblNewLabel_3 = new JLabel("Modelo");
+		lblNewLabel_3.setBounds(10, 123, 46, 14);
+		panelVeiculo.add(lblNewLabel_3);
+		
 		textFieldModelo = new JTextField();
-		textFieldModelo.setBounds(131, 141, 850, 22);
-		panelCarro.add(textFieldModelo);
+		textFieldModelo.setBounds(88, 120, 776, 20);
+		panelVeiculo.add(textFieldModelo);
 		textFieldModelo.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Modelo");
-		lblNewLabel_3.setBounds(12, 144, 56, 16);
-		panelCarro.add(lblNewLabel_3);
-		
-		textFieldPreco = new JTextField();
-		textFieldPreco.setBounds(131, 176, 851, 22);
-		panelCarro.add(textFieldPreco);
-		textFieldPreco.setColumns(10);
-		
-		JLabel lblNewLabel_4 = new JLabel("Pre\u00E7o");
-		lblNewLabel_4.setBounds(12, 179, 56, 16);
-		panelCarro.add(lblNewLabel_4);
+		JLabel lblNewLabel_4 = new JLabel("Valor");
+		lblNewLabel_4.setBounds(10, 163, 46, 14);
+		panelVeiculo.add(lblNewLabel_4);
 		
 		textFieldValor = new JTextField();
-		textFieldValor.setBounds(131, 211, 850, 22);
-		panelCarro.add(textFieldValor);
+		textFieldValor.setBounds(88, 160, 776, 20);
+		panelVeiculo.add(textFieldValor);
 		textFieldValor.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Valor de Loca\u00E7\u00E3o");
-		lblNewLabel_5.setBounds(12, 214, 107, 16);
-		panelCarro.add(lblNewLabel_5);
+		listaCarros = new DefaultListModel<Carros>();
 		
-		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setBounds(12, 287, 97, 25);
-		panelCarro.add(btnNewButton);
+		JList listVeiculo = new JList(listaCarros);
+		listVeiculo.setBounds(10, 263, 854, 273);
+		panelVeiculo.add(listVeiculo);
 		
-		JButton btnNewButton_1 = new JButton("Editar valor de Loca\u00E7\u00E3o");
-		btnNewButton_1.setBounds(307, 287, 184, 25);
-		panelCarro.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Exibir Informa\u00E7\u00E3o ");
-		btnNewButton_2.setBounds(131, 287, 149, 25);
-		panelCarro.add(btnNewButton_2);
-		
-		JList list = new JList();
-		list.setBounds(12, 325, 1001, 319);
-		panelCarro.add(list);
+		JButton btnNewButton = new JButton("Salvar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Carros carro = new Carros();
+				carro.setCodigo(Integer.parseInt(textFieldCdCarro.getText()));
+				carro.setDescricao(textFieldDescricao.getText());
+				carro.setMarca(textFieldMarca.getText());
+				carro.setModelo(textFieldModelo.getText());
+				carro.setValor(Float.parseFloat(textFieldValor.getText()));
+				
+				listaCarros.addElement(carro);
+			}
+		});
+		btnNewButton.setBounds(762, 227, 89, 23);
+		panelVeiculo.add(btnNewButton);
 		
 		JPanel panelUsuario = new JPanel();
-		CadastroCarros.addTab("Cadastro Usuarios", null, panelUsuario, null);
+		tabbedPane.addTab("Usu\u00E1rio", null, panelUsuario, null);
 		panelUsuario.setLayout(null);
 		
-		JLabel lblNewLabel_6 = new JLabel("Nome");
-		lblNewLabel_6.setBounds(12, 23, 56, 16);
+		JLabel lblNewLabel_5 = new JLabel("Nome");
+		lblNewLabel_5.setBounds(10, 11, 46, 14);
+		panelUsuario.add(lblNewLabel_5);
+		
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(107, 8, 313, 20);
+		panelUsuario.add(textFieldNome);
+		textFieldNome.setColumns(10);
+		
+		JLabel lblSobrenome = new JLabel("Sobrenome");
+		lblSobrenome.setBounds(10, 49, 87, 14);
+		panelUsuario.add(lblSobrenome);
+		
+		textFieldSobrenome = new JTextField();
+		textFieldSobrenome.setColumns(10);
+		textFieldSobrenome.setBounds(107, 46, 313, 20);
+		panelUsuario.add(textFieldSobrenome);
+		
+		JLabel lblCnh = new JLabel("CNH");
+		lblCnh.setBounds(10, 87, 46, 14);
+		panelUsuario.add(lblCnh);
+		
+		textFieldCNH = new JTextField();
+		textFieldCNH.setColumns(10);
+		textFieldCNH.setBounds(107, 84, 313, 20);
+		panelUsuario.add(textFieldCNH);
+		
+		JLabel lblNascimento = new JLabel("Nascimento");
+		lblNascimento.setBounds(10, 126, 87, 14);
+		panelUsuario.add(lblNascimento);
+		
+		textFieldDtNascimento = new JTextField();
+		textFieldDtNascimento.setColumns(10);
+		textFieldDtNascimento.setBounds(107, 123, 313, 20);
+		panelUsuario.add(textFieldDtNascimento);
+		
+		JLabel lblFone = new JLabel("Fone");
+		lblFone.setBounds(484, 11, 87, 14);
+		panelUsuario.add(lblFone);
+		
+		textFieldFone = new JTextField();
+		textFieldFone.setColumns(10);
+		textFieldFone.setBounds(569, 8, 295, 20);
+		panelUsuario.add(textFieldFone);
+		
+		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setBounds(484, 49, 87, 14);
+		panelUsuario.add(lblEmail);
+		
+		textFieldEmail = new JTextField();
+		textFieldEmail.setColumns(10);
+		textFieldEmail.setBounds(569, 41, 295, 20);
+		panelUsuario.add(textFieldEmail);
+		
+		JLabel lblEndereo = new JLabel("Endere\u00E7o");
+		lblEndereo.setBounds(484, 90, 87, 14);
+		panelUsuario.add(lblEndereo);
+		
+		textFieldEndereco = new JTextField();
+		textFieldEndereco.setColumns(10);
+		textFieldEndereco.setBounds(569, 87, 295, 20);
+		panelUsuario.add(textFieldEndereco);
+		
+		JLabel lblNewLabel_6 = new JLabel("Complemento");
+		lblNewLabel_6.setBounds(10, 159, 87, 14);
 		panelUsuario.add(lblNewLabel_6);
 		
-		JLabel lblNewLabel_7 = new JLabel("Sobrenome");
-		lblNewLabel_7.setBounds(12, 52, 92, 16);
+		textFieldCpl = new JTextField();
+		textFieldCpl.setBounds(107, 156, 313, 20);
+		panelUsuario.add(textFieldCpl);
+		textFieldCpl.setColumns(10);
+		
+		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setBounds(484, 126, 87, 14);
+		panelUsuario.add(lblCidade);
+		
+		textFieldCidade = new JTextField();
+		textFieldCidade.setColumns(10);
+		textFieldCidade.setBounds(569, 123, 295, 20);
+		panelUsuario.add(textFieldCidade);
+		
+		JLabel lblNewLabel_7 = new JLabel("Cep");
+		lblNewLabel_7.setBounds(484, 164, 31, 14);
 		panelUsuario.add(lblNewLabel_7);
 		
-		JLabel lblNewLabel_8 = new JLabel("CNH");
-		lblNewLabel_8.setBounds(12, 81, 56, 16);
-		panelUsuario.add(lblNewLabel_8);
+		textFieldCep = new JTextField();
+		textFieldCep.setColumns(10);
+		textFieldCep.setBounds(569, 161, 130, 20);
+		panelUsuario.add(textFieldCep);
 		
-		JLabel lblNewLabel_9 = new JLabel("Categoria");
-		lblNewLabel_9.setBounds(288, 81, 56, 16);
-		panelUsuario.add(lblNewLabel_9);
+		JLabel lblUf = new JLabel("UF");
+		lblUf.setBounds(711, 164, 36, 14);
+		panelUsuario.add(lblUf);
 		
-		JLabel lblNewLabel_10 = new JLabel("Data de Nascimento");
-		lblNewLabel_10.setBounds(12, 113, 123, 16);
-		panelUsuario.add(lblNewLabel_10);
+		textFieldUf = new JTextField();
+		textFieldUf.setColumns(10);
+		textFieldUf.setBounds(739, 161, 125, 20);
+		panelUsuario.add(textFieldUf);
 		
-		textField = new JTextField();
-		textField.setBounds(134, 20, 116, 22);
-		panelUsuario.add(textField);
-		textField.setColumns(10);
+		listaUsuario = new DefaultListModel<Usuario>();
+		JList listUsuario = new JList(listaUsuario);
+		listUsuario.setBounds(10, 261, 852, 288);
+		panelUsuario.add(listUsuario);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(134, 49, 116, 22);
-		panelUsuario.add(textField_1);
-		textField_1.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(134, 78, 116, 22);
-		panelUsuario.add(textField_2);
-		textField_2.setColumns(10);
+		JButton btnNewSalvarU = new JButton("Salvar");
+		btnNewSalvarU.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Usuario pessoa = new Usuario();
+				pessoa.setCep(textFieldCep.getText());
+				pessoa.setCidade(textFieldCidade.getText());
+				pessoa.setCnh(textFieldCNH.getText());
+				pessoa.setCpl(textFieldCpl.getText());
+				pessoa.setEmail(textFieldEmail.getText());
+				pessoa.setEndereco(textFieldEndereco.getText());
+				pessoa.setFone(textFieldFone.getText());
+				pessoa.setNome(textFieldNome.getText());
+				pessoa.setSobrenome(textFieldSobrenome.getText());
+				pessoa.setUf(textFieldUf.getText());
+				
+				listaUsuario.addElement(pessoa);
+			}
+		});
+		btnNewSalvarU.setBounds(775, 212, 89, 23);
+		panelUsuario.add(btnNewSalvarU);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(358, 78, 116, 22);
-		panelUsuario.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(134, 110, 116, 22);
-		panelUsuario.add(textField_4);
-		textField_4.setColumns(10);
-		
-		textField_5 = new JTextField();
-		textField_5.setBounds(134, 142, 56, 22);
-		panelUsuario.add(textField_5);
-		textField_5.setColumns(10);
-		
-		textField_6 = new JTextField();
-		textField_6.setBounds(202, 142, 116, 22);
-		panelUsuario.add(textField_6);
-		textField_6.setColumns(10);
-		
-		JLabel lblNewLabel_11 = new JLabel("Telefone");
-		lblNewLabel_11.setBounds(12, 145, 56, 16);
-		panelUsuario.add(lblNewLabel_11);
-		
-		JLabel lblNewLabel_12 = new JLabel("E-mail");
-		lblNewLabel_12.setBounds(12, 174, 56, 16);
-		panelUsuario.add(lblNewLabel_12);
-		
-		textField_7 = new JTextField();
-		textField_7.setBounds(134, 177, 184, 22);
-		panelUsuario.add(textField_7);
-		textField_7.setColumns(10);
-		
-		JLabel lblNewLabel_13 = new JLabel("Rua");
-		lblNewLabel_13.setBounds(533, 23, 56, 16);
-		panelUsuario.add(lblNewLabel_13);
-		
-		textField_8 = new JTextField();
-		textField_8.setBounds(629, 20, 384, 22);
-		panelUsuario.add(textField_8);
-		textField_8.setColumns(10);
-		
-		JLabel lblNewLabel_14 = new JLabel("Complemento");
-		lblNewLabel_14.setBounds(533, 52, 84, 16);
-		panelUsuario.add(lblNewLabel_14);
-		
-		textField_9 = new JTextField();
-		textField_9.setBounds(629, 49, 66, 22);
-		panelUsuario.add(textField_9);
-		textField_9.setColumns(10);
-		
-		JLabel lblNewLabel_15 = new JLabel("CEP");
-		lblNewLabel_15.setBounds(723, 52, 56, 16);
-		panelUsuario.add(lblNewLabel_15);
-		
-		textField_10 = new JTextField();
-		textField_10.setBounds(759, 49, 116, 22);
-		panelUsuario.add(textField_10);
-		textField_10.setColumns(10);
-		
-		JLabel lblNewLabel_16 = new JLabel("Cidade");
-		lblNewLabel_16.setBounds(533, 81, 56, 16);
-		panelUsuario.add(lblNewLabel_16);
-		
-		textField_11 = new JTextField();
-		textField_11.setBounds(629, 78, 116, 22);
-		panelUsuario.add(textField_11);
-		textField_11.setColumns(10);
-		
-		JLabel lblNewLabel_17 = new JLabel("Estado");
-		lblNewLabel_17.setBounds(779, 81, 56, 16);
-		panelUsuario.add(lblNewLabel_17);
-		
-		textField_12 = new JTextField();
-		textField_12.setBounds(829, 78, 116, 22);
-		panelUsuario.add(textField_12);
-		textField_12.setColumns(10);
-		
-		JButton btnNewButton_3 = new JButton("Cadastrar Usuario");
-		btnNewButton_3.setBounds(838, 170, 147, 25);
-		panelUsuario.add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("Exibir Informa\u00E7\u00F5es");
-		btnNewButton_4.setBounds(643, 170, 154, 25);
-		panelUsuario.add(btnNewButton_4);
-		
-		JList list_1 = new JList();
-		list_1.setBounds(12, 248, 1001, 396);
-		panelUsuario.add(list_1);
 		
 		JPanel panelLocacao = new JPanel();
-		CadastroCarros.addTab("Locacao", null, panelLocacao, null);
+		tabbedPane.addTab("Loca\u00E7\u00E3o", null, panelLocacao, null);
 		panelLocacao.setLayout(null);
 		
-		textField_13 = new JTextField();
-		textField_13.setBounds(137, 13, 116, 22);
-		panelLocacao.add(textField_13);
-		textField_13.setColumns(10);
+		JLabel lblNewLabel_8 = new JLabel("Usu\u00E1rio");
+		lblNewLabel_8.setBounds(10, 11, 46, 14);
+		panelLocacao.add(lblNewLabel_8);
 		
-		JLabel lblNewLabel_18 = new JLabel("Usu\u00E1rio");
-		lblNewLabel_18.setBounds(12, 16, 56, 16);
-		panelLocacao.add(lblNewLabel_18);
+		textFieldUsuarioLoca = new JTextField();
+		textFieldUsuarioLoca.setBounds(106, 8, 299, 20);
+		panelLocacao.add(textFieldUsuarioLoca);
+		textFieldUsuarioLoca.setColumns(10);
 		
-		JLabel lblNewLabel_19 = new JLabel("Carro");
-		lblNewLabel_19.setBounds(12, 43, 56, 16);
-		panelLocacao.add(lblNewLabel_19);
+		JLabel lblVeculo = new JLabel("Ve\u00EDculo");
+		lblVeculo.setBounds(10, 47, 46, 14);
+		panelLocacao.add(lblVeculo);
 		
-		textField_14 = new JTextField();
-		textField_14.setBounds(137, 40, 116, 22);
-		panelLocacao.add(textField_14);
-		textField_14.setColumns(10);
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(106, 44, 299, 20);
+		panelLocacao.add(textField_1);
 		
-		JLabel lblNewLabel_20 = new JLabel("Data de Loca\u00E7\u00E3o");
-		lblNewLabel_20.setBounds(12, 72, 113, 16);
-		panelLocacao.add(lblNewLabel_20);
+		JLabel lblDataLocao = new JLabel();
+		lblDataLocao.setText("Data Loca\u00E7\u00E3o");
+		lblDataLocao.setBounds(10, 85, 89, 14);
+		panelLocacao.add(lblDataLocao);
 		
-		textField_15 = new JTextField();
-		textField_15.setBounds(137, 69, 116, 22);
-		panelLocacao.add(textField_15);
-		textField_15.setColumns(10);
+		textFieldDtLoca = new JTextField();
+		textFieldDtLoca.setColumns(10);
+		textFieldDtLoca.setBounds(106, 82, 299, 20);
+		panelLocacao.add(textFieldDtLoca);
 		
-		JLabel lblNewLabel_21 = new JLabel("Data estimada de devolu\u00E7\u00E3o");
-		lblNewLabel_21.setBounds(12, 101, 182, 16);
-		panelLocacao.add(lblNewLabel_21);
+		JLabel lblDataDevoluo = new JLabel("Data Devolu\u00E7\u00E3o");
+		lblDataDevoluo.setBounds(417, 125, 122, 14);
+		panelLocacao.add(lblDataDevoluo);
 		
-		textField_16 = new JTextField();
-		textField_16.setBounds(183, 98, 116, 22);
-		panelLocacao.add(textField_16);
-		textField_16.setColumns(10);
+		textFieldDtDevo = new JTextField();
+		textFieldDtDevo.setColumns(10);
+		textFieldDtDevo.setBounds(515, 122, 349, 20);
+		panelLocacao.add(textFieldDtDevo);
 		
-		JLabel lblNewLabel_22 = new JLabel("Data de devolu\u00E7\u00E3o");
-		lblNewLabel_22.setBounds(12, 130, 160, 16);
-		panelLocacao.add(lblNewLabel_22);
+		textFieldVlPagar = new JTextField();
+		textFieldVlPagar.setColumns(10);
+		textFieldVlPagar.setBounds(515, 8, 349, 20);
+		panelLocacao.add(textFieldVlPagar);
 		
-		textField_17 = new JTextField();
-		textField_17.setBounds(183, 130, 116, 22);
-		panelLocacao.add(textField_17);
-		textField_17.setColumns(10);
+		JLabel lblValor = new JLabel("Valor a Pagar");
+		lblValor.setBounds(417, 14, 86, 14);
+		panelLocacao.add(lblValor);
 		
-		JLabel lblNewLabel_23 = new JLabel("Valor Cobrado");
-		lblNewLabel_23.setBounds(460, 16, 97, 16);
-		panelLocacao.add(lblNewLabel_23);
+		JLabel lblValorPago = new JLabel("Valor Pago");
+		lblValorPago.setBounds(417, 47, 86, 14);
+		panelLocacao.add(lblValorPago);
 		
-		textField_18 = new JTextField();
-		textField_18.setBounds(569, 13, 116, 22);
-		panelLocacao.add(textField_18);
-		textField_18.setColumns(10);
+		textFieldVlPago = new JTextField();
+		textFieldVlPago.setColumns(10);
+		textFieldVlPago.setBounds(515, 44, 349, 20);
+		panelLocacao.add(textFieldVlPago);
 		
-		JLabel lblNewLabel_24 = new JLabel("Valor Pago");
-		lblNewLabel_24.setBounds(460, 43, 70, 16);
-		panelLocacao.add(lblNewLabel_24);
+		JLabel lblValorMulta = new JLabel("Valor Multa");
+		lblValorMulta.setBounds(417, 85, 86, 14);
+		panelLocacao.add(lblValorMulta);
 		
-		textField_19 = new JTextField();
-		textField_19.setBounds(569, 40, 116, 22);
-		panelLocacao.add(textField_19);
-		textField_19.setColumns(10);
+		textFieldVlMulta = new JTextField();
+		textFieldVlMulta.setColumns(10);
+		textFieldVlMulta.setBounds(515, 82, 349, 20);
+		panelLocacao.add(textFieldVlMulta);
 		
-		JLabel lblNewLabel_25 = new JLabel("Valor Multa");
-		lblNewLabel_25.setBounds(460, 72, 97, 16);
-		panelLocacao.add(lblNewLabel_25);
+		listaLocacao = new DefaultListModel<Locacao>();
+		JList list = new JList(listaLocacao);
+		list.setBounds(10, 234, 854, 302);
+		panelLocacao.add(list);
 		
-		textField_20 = new JTextField();
-		textField_20.setBounds(569, 69, 116, 22);
-		panelLocacao.add(textField_20);
-		textField_20.setColumns(10);
+		JButton btnNewLocar = new JButton("Locar");
+		btnNewLocar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Locacao locacao = new Locacao();
+				locacao.setUsuario(Integer.parseInt(textFieldUsuarioLoca.getText()));
+				locacao.setVeiculo(Integer.parseInt(textFieldUsuarioLoca.getText()));
+				locacao.setVlMulta(Float.parseFloat(textFieldVlMulta.getText()));
+				locacao.setVlPagar(Float.parseFloat(textFieldVlPagar.getText()));
+				locacao.setVlPago(Float.parseFloat(textFieldVlPago.getText()));
+				
+				listaLocacao.addElement(locacao);
+			}
+		});
+		btnNewLocar.setBounds(775, 198, 89, 23);
+		panelLocacao.add(btnNewLocar);
 		
-		JButton btnNewButton_5 = new JButton("Locar Carro");
-		btnNewButton_5.setBounds(858, 126, 128, 25);
-		panelLocacao.add(btnNewButton_5);
 		
-		JButton btnNewButton_6 = new JButton("Carros Locados");
-		btnNewButton_6.setBounds(692, 126, 133, 25);
-		panelLocacao.add(btnNewButton_6);
-		
-		JButton btnNewButton_7 = new JButton("Devolver Carro");
-		btnNewButton_7.setBounds(515, 126, 140, 25);
-		panelLocacao.add(btnNewButton_7);
-		
-		JList list_2 = new JList();
-		list_2.setBounds(12, 191, 1001, 453);
-		panelLocacao.add(list_2);
 	}
 }
